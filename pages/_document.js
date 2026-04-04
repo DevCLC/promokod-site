@@ -5,15 +5,18 @@ export default function Document() {
     <Html lang="ru">
       <Head>
         <meta charSet="utf-8" />
-        <meta name="theme-color" content="#3F4A2F" />
+        <meta name="theme-color" content="#1F3D36" />
         <meta name="robots" content="index, follow" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233F4A2F'/><text y='.9em' font-size='80' x='10'>S</text></svg>" />
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231F3D36'/><text y='.88em' font-size='72' x='14' fill='%23C9C2A3' font-family='Georgia,serif' font-weight='700'>S</text></svg>"
+        />
       </Head>
       <body>
         <Main />
