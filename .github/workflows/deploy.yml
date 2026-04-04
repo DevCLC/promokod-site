@@ -32,6 +32,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate sitemap
+        run: node -e "
+          const p=require('./data/products.js').default||require('./data/products.js');
+          const d=new Date().toISOString().split('T')[0];
+          const S='https://devclc.github.io/promokod-site';
+          const u=['','/catalog',...p.map(x=>'/product/'+x.id)];
+          const xml='<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n'+u.map(x=>'<url><loc>'+S+x+'</loc><lastmod>'+d+'</lastmod><priority>'+(x===''?'1.0':'0.9')+'</priority></url>').join('\n')+'\n</urlset>';
+          require('fs').writeFileSync('./public/sitemap.xml',xml);
+          console.log('Sitemap: '+u.length+' URLs');
+        "
+
       - name: Build
         run: npm run build
         env:

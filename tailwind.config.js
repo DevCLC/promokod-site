@@ -1,47 +1,50 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        primary: '#1F3D36',
-        'primary-light': '#2A5247',
-        accent: '#C9C2A3',
-        'accent-dark': '#A8A07F',
-        background: '#FAFAF7',
-        foreground: '#1A1A1A',
-        muted: '#F0EFE9',
-        'muted-foreground': '#6B6A65',
-        card: '#FFFFFF',
-        border: '#E8E6DF',
+        // Apple-inspired palette
+        bg:        '#F5F5F7',
+        surface:   '#FFFFFF',
+        'apple-black': '#1D1D1F',
+        secondary: '#6E6E73',
+        border:    '#D2D2D7',
+        // Brand
+        brand:     '#1F3D36',
+        'brand-light': '#2A5247',
+        accent:    '#C9C2A3',
+        // Kaspi
+        kaspi:     '#EF4C23',
+        'kaspi-hover': '#D43D18',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'sans-serif'],
         serif: ['Playfair Display', 'Georgia', 'serif'],
       },
       fontSize: {
-        'display': ['4.5rem', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
-        'display-sm': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'hero':    ['clamp(2.75rem,8vw,6rem)', { lineHeight: '1.04', letterSpacing: '-0.03em', fontWeight: '700' }],
+        'hero-sm': ['clamp(2rem,5vw,3.5rem)',  { lineHeight: '1.08', letterSpacing: '-0.025em', fontWeight: '700' }],
+        'tagline': ['clamp(1.1rem,2.5vw,1.5rem)', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
       },
       spacing: {
-        'section': '7rem',
-        'section-sm': '4rem',
+        'section': '6rem',
+        '18': '4.5rem',
       },
       borderRadius: {
-        'xl': '12px',
-        '2xl': '16px',
-        '3xl': '24px',
+        'apple': '18px',
+        'apple-sm': '12px',
       },
       boxShadow: {
-        'card': '0 2px 12px rgba(0,0,0,0.06)',
-        'card-hover': '0 8px 32px rgba(0,0,0,0.10)',
-        'btn': '0 4px 16px rgba(31,61,54,0.25)',
+        'card': '0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)',
+        'card-hover': '0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05)',
+        'nav': '0 1px 0 rgba(0,0,0,0.08)',
       },
-      transitionTimingFunction: {
-        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      backdropBlur: {
+        'apple': '20px',
       },
     },
   },
