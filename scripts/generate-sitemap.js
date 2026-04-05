@@ -11,8 +11,10 @@ const today = new Date().toISOString().split('T')[0]
 const urls = [
   { loc: SITE + '/', priority: '1.0', changefreq: 'weekly' },
   { loc: SITE + '/catalog/', priority: '0.8', changefreq: 'monthly' },
+  { loc: SITE + '/category/home/', priority: '0.8', changefreq: 'monthly' },
+  { loc: SITE + '/category/auto/', priority: '0.8', changefreq: 'monthly' },
   ...list.map((p) => ({
-    loc: `${SITE}/product/${p.id}/`,
+    loc: `${SITE}/product/${p.slug || p.id}/`,
     priority: '0.9',
     changefreq: 'monthly',
   })),

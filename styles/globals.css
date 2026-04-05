@@ -2,56 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+/* ui-ux-pro-max skill: Bento Box Grid #39 + Minimal & Direct #23 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
-/* ── Base ────────────────────────────────── */
+/* ── Base ─────────────────────────────────── */
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #F5F5F7;
-  color: #1D1D1F;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  background-color: #F8F7F3;
+  color: #111111;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
+/* Skill #39 Bento: border-radius 24px, gap 16px */
 * { box-sizing: border-box; }
 
-/* ── Scrollbar ───────────────────────────── */
+/* ── Scrollbar ────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #D2D2D7; border-radius: 4px; }
 
-/* ── Scroll reveal ───────────────────────── */
+/* ── Fonts ────────────────────────────────── */
+.font-serif  { font-family: 'Playfair Display', Georgia, serif; }
+.font-ui     { font-family: 'Manrope', 'Inter', sans-serif; }
+
+/* ── Scroll reveal (skill: 200-300ms transitions) ── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+              transform 0.6s cubic-bezier(0.16,1,0.3,1);
   will-change: opacity, transform;
 }
 .reveal.visible { opacity: 1; transform: none; }
-.reveal-d1 { transition-delay: 0.08s; }
-.reveal-d2 { transition-delay: 0.16s; }
-.reveal-d3 { transition-delay: 0.24s; }
-.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d1 { transition-delay: 0.07s; }
+.reveal-d2 { transition-delay: 0.14s; }
+.reveal-d3 { transition-delay: 0.21s; }
+.reveal-d4 { transition-delay: 0.28s; }
 
-/* ── Product card ────────────────────────── */
-.p-card {
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
-              box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+/* ── Bento Card (skill #39) ───────────────── */
+/* hover scale 1.02, shadow-sm→shadow-md, 200-300ms */
+.bento-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  transition: transform 0.28s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.28s cubic-bezier(0.16,1,0.3,1);
+  overflow: hidden;
 }
-.p-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
+.bento-card:hover {
+  transform: scale(1.015) translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.05);
 }
-.p-card-img {
+.bento-img {
   transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
 }
-.p-card:hover .p-card-img { transform: scale(1.04); }
+.bento-card:hover .bento-img { transform: scale(1.04); }
 
-/* ── Buttons ─────────────────────────────── */
+/* ── Nav blur (Apple style) ──────────────── */
+.nav-blur {
+  background: rgba(248,247,243,0.88);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* ── Buttons ──────────────────────────────── */
+/* Skill: hover 200ms ease-out, scale/translateY */
 .btn {
+  font-family: 'Manrope', 'Inter', sans-serif;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -61,79 +81,89 @@ body {
   letter-spacing: -0.01em;
   border-radius: 9999px;
   padding: 0.75rem 1.5rem;
-  transition: all 0.2s cubic-bezier(0.16,1,0.3,1);
+  transition: all 0.2s ease-out;
   cursor: pointer;
   white-space: nowrap;
+  border: none;
+  outline: none;
 }
+
 .btn-kaspi {
   background: #EF4C23;
   color: #fff;
 }
 .btn-kaspi:hover {
   background: #D43D18;
-  box-shadow: 0 6px 24px rgba(239,76,35,0.35);
+  box-shadow: 0 8px 24px rgba(239,76,35,0.32);
   transform: translateY(-1px);
 }
-.btn-brand {
+
+.btn-primary {
   background: #1F3D36;
   color: #fff;
 }
-.btn-brand:hover {
+.btn-primary:hover {
   background: #2A5247;
-  box-shadow: 0 6px 24px rgba(31,61,54,0.30);
+  box-shadow: 0 8px 24px rgba(31,61,54,0.28);
   transform: translateY(-1px);
 }
+
 .btn-outline {
   background: transparent;
-  color: #1D1D1F;
-  border: 1.5px solid #D2D2D7;
+  color: #1F3D36;
+  border: 1.5px solid #1F3D36;
 }
 .btn-outline:hover {
-  border-color: #1F3D36;
-  color: #1F3D36;
+  background: #1F3D36;
+  color: white;
   transform: translateY(-1px);
 }
+
 .btn-ghost {
   background: rgba(255,255,255,0.12);
   color: #fff;
-  border: 1.5px solid rgba(255,255,255,0.22);
+  border: 1.5px solid rgba(255,255,255,0.20);
 }
 .btn-ghost:hover {
   background: rgba(255,255,255,0.22);
   transform: translateY(-1px);
 }
+
 .btn-wa {
   background: #25D366;
   color: #fff;
 }
 .btn-wa:hover {
   background: #1bbb56;
-  box-shadow: 0 6px 24px rgba(37,211,102,0.30);
+  box-shadow: 0 8px 24px rgba(37,211,102,0.28);
   transform: translateY(-1px);
 }
 
-/* ── Nav blur ────────────────────────────── */
-.nav-blur {
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+/* ── Bento Grid Layout ────────────────────── */
+/* Skill #39: varied card sizes */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 240px;
+  gap: 16px;
 }
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; gap: 12px; }
+}
+.bento-tall { grid-row: span 2; }
+.bento-wide { grid-column: span 2; }
 
-/* ── Section ─────────────────────────────── */
-section { overflow: hidden; }
-
-/* ── Bottom nav safe area ────────────────── */
-.pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
-.bottom-nav-safe { padding-bottom: env(safe-area-inset-bottom, 0); }
-
-/* ── Input ───────────────────────────────── */
+/* ── Range input ──────────────────────────── */
 input[type=range] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 4px;
   border-radius: 2px;
-  background: #D2D2D7;
+  background: #E5E3DC;
   outline: none;
 }
 input[type=range]::-webkit-slider-thumb {
@@ -144,5 +174,21 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 50%;
   background: #1F3D36;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ── Bottom nav safe area ─────────────────── */
+.pb-safe { padding-bottom: max(5rem, calc(4rem + env(safe-area-inset-bottom))); }
+.bottom-nav-safe { padding-bottom: env(safe-area-inset-bottom, 0); }
+
+/* ── Section ──────────────────────────────── */
+section { overflow: hidden; }
+
+/* ── Prefers reduced motion ───────────────── */
+/* Skill UX guideline: always respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .bento-card, .btn, .bento-img {
+    transition: none !important;
+    animation: none !important;
+  }
 }

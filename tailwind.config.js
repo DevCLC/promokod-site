@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+// Design system built with ui-ux-pro-max skill (nextlevelbuilder)
+// Style: Bento Box Grid #39 + Minimal & Direct #23 + Apple-inspired
+// Colors from TZ: primary #1F3D36, accent #C9C2A3, bg #F8F7F3, text #111111
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -7,44 +10,62 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Apple-inspired palette
-        bg:        '#F5F5F7',
-        surface:   '#FFFFFF',
-        'apple-black': '#1D1D1F',
-        secondary: '#6E6E73',
-        border:    '#D2D2D7',
-        // Brand
-        brand:     '#1F3D36',
-        'brand-light': '#2A5247',
+        // Brand (from TZ)
+        primary:   '#1F3D36',
+        'primary-hover': '#2A5247',
         accent:    '#C9C2A3',
-        // Kaspi
+        'accent-dark': '#A8A07F',
+
+        // Page palette (from TZ + skill #39 Bento)
+        bg:        '#F8F7F3',   // warm off-white (TZ)
+        surface:   '#FFFFFF',   // card bg (skill: #FFFFFF)
+        'surface-2': '#F5F5F7', // secondary surface (skill: #F5F5F7 apple)
+        'surface-3': '#EFEDE8', // tertiary, muted blocks
+
+        // Typography (from TZ)
+        text:      '#111111',   // primary text
+        'text-2':  '#6B6B6B',   // secondary text
+
+        // UI
+        border:    '#E5E3DC',
         kaspi:     '#EF4C23',
-        'kaspi-hover': '#D43D18',
+        'kaspi-h': '#D43D18',
+
+        // Semantic
+        success:   '#16A34A',
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'serif'],
+        // TZ: Playfair Display headings, Inter body, Manrope UI
+        serif:  ['Playfair Display', 'Georgia', 'serif'],
+        sans:   ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        ui:     ['Manrope', 'Inter', 'sans-serif'],
       },
       fontSize: {
-        'hero':    ['clamp(2.75rem,8vw,6rem)', { lineHeight: '1.04', letterSpacing: '-0.03em', fontWeight: '700' }],
-        'hero-sm': ['clamp(2rem,5vw,3.5rem)',  { lineHeight: '1.08', letterSpacing: '-0.025em', fontWeight: '700' }],
-        'tagline': ['clamp(1.1rem,2.5vw,1.5rem)', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+        // Exaggerated Minimalism typography (skill #47)
+        'display': ['clamp(2.5rem,6vw,5.5rem)', { lineHeight: '1.04', letterSpacing: '-0.03em' }],
+        'display-sm': ['clamp(1.8rem,4vw,3rem)', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
+        'body-lg': ['1.0625rem', { lineHeight: '1.7' }],
+      },
+      borderRadius: {
+        // Skill #39 Bento: 16-24px
+        'bento': '24px',
+        'bento-sm': '16px',
+        'bento-xs': '12px',
+      },
+      boxShadow: {
+        // Skill #39: 0 4px 6px rgba(0,0,0,0.05)
+        'bento': '0 2px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.04)',
+        'bento-hover': '0 8px 32px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.05)',
+        'hero': '0 24px 80px rgba(31,61,54,0.25)',
+      },
+      gridTemplateColumns: {
+        // Bento grid (skill #39): 4 columns desktop
+        'bento': 'repeat(4, 1fr)',
+        'bento-3': 'repeat(3, 1fr)',
       },
       spacing: {
         'section': '6rem',
-        '18': '4.5rem',
-      },
-      borderRadius: {
-        'apple': '18px',
-        'apple-sm': '12px',
-      },
-      boxShadow: {
-        'card': '0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)',
-        'card-hover': '0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05)',
-        'nav': '0 1px 0 rgba(0,0,0,0.08)',
-      },
-      backdropBlur: {
-        'apple': '20px',
+        'section-sm': '4rem',
       },
     },
   },
