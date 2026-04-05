@@ -2,181 +2,193 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ui-ux-pro-max skill: Bento Box Grid #39 + Minimal & Direct #23 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
-html {
-  scroll-behavior: smooth;
-}
+/* ── Base ─────────────────────────────────── */
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: #F5F5F0;
-  color: #1E1E1E;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F8F7F3;
+  color: #111111;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
-* {
-  box-sizing: border-box;
-}
+/* Skill #39 Bento: border-radius 24px, gap 16px */
+* { box-sizing: border-box; }
 
-/* Intersection Observer fade-in animations */
-.fade-in-section {
+/* ── Scrollbar ────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D2D2D7; border-radius: 4px; }
+
+/* ── Fonts ────────────────────────────────── */
+.font-serif  { font-family: 'Playfair Display', Georgia, serif; }
+.font-ui     { font-family: 'Manrope', 'Inter', sans-serif; }
+
+/* ── Scroll reveal (skill: 200-300ms transitions) ── */
+.reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+              transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, transform;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.07s; }
+.reveal-d2 { transition-delay: 0.14s; }
+.reveal-d3 { transition-delay: 0.21s; }
+.reveal-d4 { transition-delay: 0.28s; }
+
+/* ── Bento Card (skill #39) ───────────────── */
+/* hover scale 1.02, shadow-sm→shadow-md, 200-300ms */
+.bento-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  transition: transform 0.28s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.28s cubic-bezier(0.16,1,0.3,1);
+  overflow: hidden;
+}
+.bento-card:hover {
+  transform: scale(1.015) translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.05);
+}
+.bento-img {
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.bento-card:hover .bento-img { transform: scale(1.04); }
+
+/* ── Nav blur (Apple style) ──────────────── */
+.nav-blur {
+  background: rgba(248,247,243,0.88);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* ── Buttons ──────────────────────────────── */
+/* Skill: hover 200ms ease-out, scale/translateY */
+.btn {
+  font-family: 'Manrope', 'Inter', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  outline: none;
 }
 
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-.fade-in-delay-4 { transition-delay: 0.4s; }
-
-/* Product card hover */
-.product-card-image {
-  transition: transform 0.4s ease;
+.btn-kaspi {
+  background: #EF4C23;
+  color: #fff;
+}
+.btn-kaspi:hover {
+  background: #D43D18;
+  box-shadow: 0 8px 24px rgba(239,76,35,0.32);
+  transform: translateY(-1px);
 }
 
-.product-card:hover .product-card-image {
-  transform: scale(1.05);
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #F5F5F0;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3F4A2F;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #2e3722;
-}
-
-/* Custom button styles */
 .btn-primary {
-  background-color: #3F4A2F;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  background: #1F3D36;
+  color: #fff;
 }
-
 .btn-primary:hover {
-  background-color: #2e3722;
+  background: #2A5247;
+  box-shadow: 0 8px 24px rgba(31,61,54,0.28);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(63, 74, 47, 0.3);
 }
 
-.btn-accent {
-  background-color: #A97C50;
+.btn-outline {
+  background: transparent;
+  color: #1F3D36;
+  border: 1.5px solid #1F3D36;
+}
+.btn-outline:hover {
+  background: #1F3D36;
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.btn-accent:hover {
-  background-color: #8f6940;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(169, 124, 80, 0.3);
 }
 
-/* WhatsApp button */
-.btn-whatsapp {
-  background-color: #25D366;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+.btn-ghost {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.20);
 }
-
-.btn-whatsapp:hover {
-  background-color: #1ebe5a;
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.22);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
-/* Hero gradient overlay */
-.hero-overlay {
-  background: linear-gradient(135deg, #3F4A2F 0%, #2e3722 50%, #1a2112 100%);
+.btn-wa {
+  background: #25D366;
+  color: #fff;
+}
+.btn-wa:hover {
+  background: #1bbb56;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.28);
+  transform: translateY(-1px);
 }
 
-/* Section transitions */
-section {
-  overflow: hidden;
+/* ── Bento Grid Layout ────────────────────── */
+/* Skill #39: varied card sizes */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 240px;
+  gap: 16px;
 }
-
-/* Mobile menu overlay */
-.mobile-menu-overlay {
-  backdrop-filter: blur(4px);
-  background-color: rgba(0, 0, 0, 0.4);
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* Video container aspect ratio */
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; gap: 12px; }
 }
+.bento-tall { grid-row: span 2; }
+.bento-wide { grid-column: span 2; }
 
-.video-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* ── Range input ──────────────────────────── */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 4px;
+  border-radius: 2px;
+  background: #E5E3DC;
+  outline: none;
 }
-
-/* Badge pulse animation */
-@keyframes pulse-badge {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.badge-pulse {
-  animation: pulse-badge 2s ease-in-out infinite;
-}
-
-/* Cart item quantity controls */
-.qty-btn {
-  width: 32px;
-  height: 32px;
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  font-weight: 600;
-  font-size: 1.1rem;
+  background: #1F3D36;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.qty-btn:hover {
-  transform: scale(1.1);
+/* ── Bottom nav safe area ─────────────────── */
+.pb-safe { padding-bottom: max(5rem, calc(4rem + env(safe-area-inset-bottom))); }
+.bottom-nav-safe { padding-bottom: env(safe-area-inset-bottom, 0); }
+
+/* ── Section ──────────────────────────────── */
+section { overflow: hidden; }
+
+/* ── Prefers reduced motion ───────────────── */
+/* Skill UX guideline: always respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .bento-card, .btn, .bento-img {
+    transition: none !important;
+    animation: none !important;
+  }
 }
